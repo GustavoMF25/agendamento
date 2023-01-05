@@ -42,6 +42,7 @@ while ($row = mysqli_fetch_array($resp)) {
 ?>
 <!doctype html>
 <html lang="pt-br">
+
 <head>
 
     <meta charset="utf-8" />
@@ -100,19 +101,18 @@ while ($row = mysqli_fetch_array($resp)) {
         }
 
         thead {
-            background-color: #333;
-            color: #fafafa;
+            color: #333;
 
         }
 
         th {
 
-            padding: 5px!important;
+            padding: 5px !important;
             border-radius: 3px;
         }
 
         .fc-col-header-cell-cushion:hover {
-            color: #ffcc00;
+            color: #3788d8;
         }
     </style>
 
@@ -270,7 +270,8 @@ while ($row = mysqli_fetch_array($resp)) {
                                             </div>
 
                                             <div class="row justify-content-center mt-5">
-                                                <img src="assets/images/verification-img.png" alt="" class="img-fluid d-block">
+                                                <lottie-player src="<?=BASED?>/assets/animation/calendar.json" background="transparent" speed="1" style="width: 400px; height: 400px;" loop autoplay>
+                                                </lottie-player>
                                             </div>
                                         </div>
                                     </div>
@@ -441,6 +442,9 @@ while ($row = mysqli_fetch_array($resp)) {
     <!-- plugin js -->
 
     <script src="<?= BASED ?>/include/funcao.js"></script>
+
+
+    <script src="<?= BASEF ?>/assets/js/lottie-player.js"></script>
 
     <!-- Summernote -->
     <script src="<?= BASEF ?>/vendor/assets/summernote/summernote-lite.min.js"></script>
