@@ -21,7 +21,8 @@ if ($titulo != '' && $dataInicio != '' && $dataFim != '' && $importancia != '') 
 
     $sqlInsert = "insert into agendamento values(
                                             null,
-                                            null, 
+                                            {$_SESSION['id']}, 
+                                            {$_SESSION['idsistema']}, 
                                             '{$titulo}', 
                                             {$importancia}, 
                                             '{$url}', 

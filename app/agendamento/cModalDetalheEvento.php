@@ -3,20 +3,32 @@ include "../config/config.php";
 include "../config/conn.php";
 include "../config/funcao.php";
 $id = $_POST['id'];
-$sqlAgendamento = "select * from agendamento where id = {$id}";
+$sqlAgendamento = "select 
+                        titulo,
+                        importancia,
+                        url,
+                        descricao,
+                        datainicio,
+                        datafim,
+                        diatodo,
+                        horainicio,
+                        horafim 
+                    from agendamento
+                    where id = {$id}";
 $resp = mysqli_query($con, $sqlAgendamento);
 
-$agendamento = mysqli_fetch_all($resp)[0];
-$titulo = $agendamento[2];
-$importancia = $agendamento[3];
-$url = $agendamento[4];
-$descricao = $agendamento[5];
-$dataInicio = dataBuscaBanco($agendamento[6]);
-$dataFim = dataBuscaBanco($agendamento[7]);
-$diatodo = $agendamento[8];
-$horaInicio = $agendamento[9];
-$horaFim = $agendamento[10];
+$agendamento = mysqli_fetch_array($resp);
 
+
+$titulo = $agendamento[0];
+$importancia = $agendamento[1];
+$url = $agendamento[2];
+$descricao = $agendamento[3];
+$dataInicio = dataBuscaBanco($agendamento[4]);
+$dataFim = dataBuscaBanco($agendamento[5]);
+$diatodo = $agendamento[6];
+$horaInicio = $agendamento[7];
+$horaFim = $agendamento[8];
 ?>
 <div class="modal-header">
     <span class="">

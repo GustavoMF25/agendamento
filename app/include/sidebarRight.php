@@ -26,7 +26,6 @@
                 <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
             </div>
         </div>
-    </div> <!-- end slimscroll-menu-->
+    </div> 
 </div>
-<!-- /Right-bar -->
 <div class="rightbar-overlay"></div>

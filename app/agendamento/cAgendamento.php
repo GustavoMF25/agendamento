@@ -10,7 +10,7 @@ $sqlQuery = "select
                 inicio,
                 fim,
                 importancia
-            from agendamento";
+            from agendamento where idusuario = {$_session['id']}";
 $resp = mysqli_query($con, $sqlQuery);
 $response = [];
 $i = 0;

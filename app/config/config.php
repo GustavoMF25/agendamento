@@ -25,6 +25,15 @@ function pathUrl() {
     return $root;
 }
 
+if (!isset($_SESSION['id'])) {
+    include './conn.php';
+    $sesseionId = session_id();
+    mysqli_close($con);
+    session_destroy();
+    $msg = "Sem acesso! <br> <i class='fa fa-frown-o' aria-hidden='true'></i>";
+    // header("location:../?msg=" . $msg);
+}
+
 //Dominio/
 $temBasef = array_reverse(explode('/', pathUrl()));
 unset($temBasef[0], $temBasef[1], $temBasef[2]);

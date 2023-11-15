@@ -1,0 +1,24 @@
+[11-Apr-2023 21:32:30 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:15:53 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:16:58 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:17:19 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:21:47 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:24:47 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:25:51 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:27:04 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:27:40 America/Sao_Paulo] PHP Notice:  session_start(): A session had already been started - ignoring in /home/emegygxj/public_html/agendamento/app/sair.php on line 6
+[11-Apr-2023 22:31:55 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function dataBuscaBanco() in /home/emegygxj/public_html/agendamento/app/include/navbar.php:293
+Stack trace:
+#0 /home/emegygxj/public_html/agendamento/app/index.php(249): include()
+#1 {main}
+  thrown in /home/emegygxj/public_html/agendamento/app/include/navbar.php on line 293
+[11-Apr-2023 22:33:22 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function dataBuscaBanco() in /home/emegygxj/public_html/agendamento/app/include/navbar.php:293
+Stack trace:
+#0 /home/emegygxj/public_html/agendamento/app/index.php(249): include()
+#1 {main}
+  thrown in /home/emegygxj/public_html/agendamento/app/include/navbar.php on line 293
+[11-Apr-2023 22:33:47 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function dataBuscaBanco() in /home/emegygxj/public_html/agendamento/app/include/navbar.php:293
+Stack trace:
+#0 /home/emegygxj/public_html/agendamento/app/index.php(249): include()
+#1 {main}
+  thrown in /home/emegygxj/public_html/agendamento/app/include/navbar.php on line 293
