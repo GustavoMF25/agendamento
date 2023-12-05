@@ -50,4 +50,4 @@ if (!empty($nome) && !empty($login) && !empty($email_usuario) && !empty($nascime
 } else {
     $response = ["msg" => "Por favor, preencha corretamente as informações!", "response" => false, "acao" => 2];
 }
-// header("Location: ../../index.php?msg={$response['msg']}&response={$response['response']}&acao={$response['acao']}");
+header("Location: ../../index.php?msg={$response['msg']}&response={$response['response']}&acao={$response['acao']}");

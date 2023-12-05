@@ -4,6 +4,8 @@ session_start();
 
 setlocale(LC_ALL, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
+define("PATH_CONFIG", __DIR__);
+require(PATH_CONFIG . "/../../required.php");
 
 //DOMAIN = dominio Ex:.. localhost
 function pathUrl() {
@@ -31,7 +33,7 @@ if (!isset($_SESSION['id'])) {
     mysqli_close($con);
     session_destroy();
     $msg = "Sem acesso! <br> <i class='fa fa-frown-o' aria-hidden='true'></i>";
-    // header("location:../?msg=" . $msg);
+    header("location:../?msg=" . $msg);
 }
 
 //Dominio/
