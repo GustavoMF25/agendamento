@@ -4,17 +4,19 @@ include "../config/conn.php";
 include "../config/funcao.php";
 $id = $_POST['id'];
 $sqlAgendamento = "select 
-                        titulo,
-                        importancia,
-                        url,
-                        descricao,
-                        datainicio,
-                        datafim,
-                        diatodo,
-                        horainicio,
-                        horafim 
-                    from agendamento
-                    where id = {$id}";
+                        a.titulo,
+                        a.importancia,
+                        a.url,
+                        a.descricao,
+                        a.datainicio,
+                        a.datafim,
+                        a.diatodo,
+                        a.horainicio,
+                        a.horafim,
+                        u.nome
+                    from agendamento a
+                    left join usuario u on (u.id = a.idusuario)
+                    where a.id = {$id}";
 $resp = mysqli_query($con, $sqlAgendamento);
 
 $agendamento = mysqli_fetch_array($resp);
@@ -29,26 +31,27 @@ $dataFim = dataBuscaBanco($agendamento[5]);
 $diatodo = $agendamento[6];
 $horaInicio = $agendamento[7];
 $horaFim = $agendamento[8];
+$usuario = $agendamento[9];
 ?>
 <div class="modal-header">
     <span class="">
         <h5 class="modal-title "><?= $titulo ?></h5>
     </span>
-    <span class="">
-        <?php
-        switch ($importancia) {
-            case 3:
-                echo "<span class='badge bg-danger'><i class='fas fa-exclamation-circle'></i> Urgente</span>";
-                break;
-            case 2:
-                echo "<span class='badge bg-warning'><i class='fas fa-exclamation-circle'></i> Importante</span>";
-                break;
-            case 1:
-                echo "<span class='badge bg-primary'><i class='fas fa-exclamation-circle'></i> Básico</span>";
-                break;
-        }
-        ?>
-    </span>
+
+    <?php
+    switch ($importancia) {
+        case 3:
+            echo "<span class='badge bg-danger'><i class='fas fa-exclamation-circle'></i> Urgente</span>";
+            break;
+        case 2:
+            echo "<span class='badge bg-warning'><i class='fas fa-exclamation-circle'></i> Importante</span>";
+            break;
+        case 1:
+            echo "<span class='badge bg-primary'><i class='fas fa-exclamation-circle'></i> Básico</span>";
+            break;
+    }
+    ?>
+
 </div>
 <div class="modal-body">
     <div class="row">
@@ -75,8 +78,14 @@ $horaFim = $agendamento[8];
 
     </div>
 </div>
-<div class="modal-footer">
-    <button type="button" onclick="$('#modalDetalhes').modal('toggle')" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+<div class="modal-footer d-flex justify-content-between">
+
+    <div>
+        <span><small>Criado por: <b><?= $usuario ?></b></small></span>
+    </div>
+    <div>
+        <button type="button" onclick="$('#modalDetalhes').modal('toggle')" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+    </div>
 </div>
 <?php
 mysqli_close($con);

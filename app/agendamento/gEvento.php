@@ -34,6 +34,8 @@ if ($titulo != '' && $dataInicio != '' && $dataFim != '' && $importancia != '') 
                                             {$horaFim}
                                         )";
 
+                                        // echo $sqlInsert;
+
     if (!mysqli_query($con, $sqlInsert)) {
         $response = ["msg" => "Erro ao criar evento :/ ", "acao" => "2"];
     } else {
@@ -42,4 +44,5 @@ if ($titulo != '' && $dataInicio != '' && $dataFim != '' && $importancia != '') 
 } else {
     $response = ["msg" => "Preencha as informações", "acao" => "1"];
 }
+
 header("Location: ../?msg={$response['msg']}&acao={$response['acao']}");

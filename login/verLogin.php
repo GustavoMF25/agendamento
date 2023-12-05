@@ -1,11 +1,10 @@
 <?php
-
-include './conn.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_erros', 1);
+require("../required.php");
+include '../app/config/conn.php';
 session_start();
 
-function getUserIP() {
+function getUserIP()
+{
     $client = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
     $remote = $_SERVER['REMOTE_ADDR'];
@@ -23,7 +22,7 @@ function getUserIP() {
 
 $_SESSION['ip'] = $user_ip = getUserIP();
 $login = $_POST["login"];
-$senha = md5($_POST["senha"]);
+$senha = $_POST["senha"];
 if ($login == null || $senha == null) {
     $msg = "=) <br>usuário e/ou senha inválidos.";
 
@@ -36,14 +35,23 @@ if ($login == null || $senha == null) {
                    email,
                    datanascimento,
                    idsistema,
-                   foto
+                   foto,
+                   senha
             from usuario 
-            where login = '{$login}' and senha = '{$senha}' and status = 'a'";
+            where login = '{$login}' and status = 'a'";
 
-    if ($query = mysqli_query($con, $sql)) {
+    if (!$query = mysqli_query($con, $sql)) {
+
+        $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> UErro ao procurar usuario";
+        header("location: ../index.php?msg=" . $msg);
+    } elseif (!mysqli_num_rows($query)) {
+
+        $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> Usuario desativado ou inexistente";
+        header("location: ../index.php?msg=" . $msg);
+    } else {
+
         $row = mysqli_fetch_array($query);
-        if (isset($row)) {
-
+        if (password_verify($senha, $row[7])) {
             $sqlSistema = "select idplano, nomecliente, logo from sistema where ativo = 's' and id = {$row[5]}";
 
             $querySis = mysqli_query($con, $sqlSistema);
@@ -62,18 +70,15 @@ if ($login == null || $senha == null) {
                 $_SESSION['logo'] = $rowSis[2];
                 $_SESSION['temp'] = time();
                 $_SESSION['tokenForm'] = md5(time());
-          
+
                 header("Location: ../app/");
             } else {
                 $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> Sistema desativado ou inexistente";
                 header("location: ../index.php?msg=" . $msg);
             }
         } else {
-            $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> Usuario desativado ou inexistente";
+            $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> Erro ao procurar usuario";
             header("location: ../index.php?msg=" . $msg);
         }
-    } else {
-        $msg = "<i class='fa fa-frown-o' aria-hidden='true'></i> <br> Erro ao procurar usuario!";
-        header("location: ../index.php?msg=" . $msg);;;
     }
 }
