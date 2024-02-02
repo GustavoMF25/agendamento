@@ -231,8 +231,7 @@ if ($rows > 0) {
     <div id="layout-wrapper">
         <?php
         include "./include/navbar.php";
-
-        // include "./include/sidebarLeft.php";
+        include "./include/sidebarLeft.php";
         ?>
 
         <!-- CONTEUDO PRINCIPAL -->

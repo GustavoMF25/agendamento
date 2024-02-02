@@ -5,10 +5,11 @@
             <div class="navbar-brand-box">
                 <span class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="32">
+                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="32"> 
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="37">
+                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="37"> 
+                        <strong><?=$_SESSION['nomecliente']?></strong>
                     </span>
                 </span>
 
@@ -17,10 +18,13 @@
                         <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="32">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="39">
+                        <img src="<?= BASED ?>/assets/images/<?= isset($_SESSION['logo']) ? $_SESSION['logo'] : 'syntaxweb_logo.png' ?>" alt="" height="39"> 
                     </span>
                 </span>
             </div>
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
             <div class="m-t-10 m-l-25 d-flex align-items-center">
                 <span>
                     <?php
@@ -83,7 +87,7 @@
                     <li class="nav-item" role="presentation" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" title="Usuarios">
                         <a class="nav-link active" data-bs-toggle="tab" href="#usuarios" role="tab" aria-selected="true">
                             <span class="d-block d-sm-none"><i class="bx bx-id-card"></i></span>
-                            <span class="d-none d-sm-block"><i class="bx bx-id-card"></i> Usuarios</span>    
+                            <span class="d-none d-sm-block"><i class="bx bx-id-card"></i> Usuarios</span>
                         </a>
                     </li>
                 </ul>
@@ -128,7 +132,7 @@
                                                     where idsistema = {$_SESSION['idsistema']}";
                                         if ($respUser = mysqli_query($con, $sqlUser)) {
                                             while ($row = mysqli_fetch_array($respUser)) {
-                                                ?>
+                                        ?>
                                                 <tr>
                                                     <!--<td class="text-nowrap"><b>#<?= $row[0] ?></b></td>-->
                                                     <td class="text-nowrap">
@@ -142,13 +146,13 @@
                                                         <i class="bx bx-pencil"></i>
                                                     </td>
                                                 </tr>
-                                                <?php
+                                        <?php
                                             }
                                         } else {
                                             echo "Sem usuarios encontrados";
                                         }
                                         ?>
-                                    </tbody> 
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -161,7 +165,7 @@
                                 <h5>Criação de usuarios</h5>
                             </div>
 
-                            <form method="post" action="<?=BASED?>/usuario/include/gUsuario.php" enctype="multipart/form-data">
+                            <form method="post" action="<?= BASED ?>/usuario/include/gUsuario.php" enctype="multipart/form-data">
 
                                 <div class="row">
                                     <div class="col-md-6">
